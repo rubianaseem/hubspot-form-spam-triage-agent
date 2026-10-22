@@ -1,0 +1,4 @@
+# Optional: only used when ANTHROPIC_API_KEY is set. The agent runs without it.
+anthropic>=0.40.0
+# Optional: loads your .env file. The agent also runs without it.
+python-dotenv>=1.0.0
