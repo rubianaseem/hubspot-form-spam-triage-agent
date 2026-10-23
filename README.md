@@ -1,4 +1,4 @@
-# 🛡️ HubSpot Form Spam Triage Agent
+# HubSpot Form Spam Triage Agent
 
 **Keep fake form fills out of your workflows, your sales queue and your conversion reports, without deleting a single real lead.**
 
@@ -6,7 +6,7 @@
 
 ---
 
-## 🧠 The pain point
+## The pain point
 
 The spam that hurts isn't the obvious bot. It's the submission that passes CAPTCHA and honeypots and lands in the CRM looking like a lead, then enrols in workflows and counts as a conversion. I took the community's advice literally: score risk from several signals, quarantine, and never delete on one signal alone.
 
@@ -17,7 +17,7 @@ More quotes are in [docs/DETAILS.md](docs/DETAILS.md#the-pain-point-all-quotes-a
 
 ---
 
-## ✨ What it does
+## What it does
 
 - **Scores risk from small signals:** disposable or random-looking emails, keyboard-mash names, fake phone numbers, pitch-style messages and pasted links
 - **Catches coordinated spam:** the same phone or message from different emails, and bursts of submissions on one form
@@ -28,7 +28,7 @@ More quotes are in [docs/DETAILS.md](docs/DETAILS.md#the-pain-point-all-quotes-a
 
 ---
 
-## 🗺 Where each step runs
+## Where each step runs
 
 1. **GitHub** holds the code. Clone it or click **Code → Download ZIP**.
 2. **HubSpot** gives you the input: export the form's submissions or recently created contacts as a CSV.
@@ -40,7 +40,7 @@ More quotes are in [docs/DETAILS.md](docs/DETAILS.md#the-pain-point-all-quotes-a
 
 ---
 
-## 🚀 Quick start
+## Quick start
 
 ```bash
 git clone https://github.com/rubianaseem/hubspot-form-spam-triage-agent.git
@@ -54,7 +54,7 @@ Use your own export with `python agent.py --input ~/Downloads/contact-us-submiss
 
 ---
 
-## 📋 Example output
+## Example output
 
 On the included `sample_form_submissions.csv` (8 fictional submissions), with no API key:
 
@@ -72,7 +72,7 @@ Nothing was deleted or sent to HubSpot.
 
 ---
 
-## 📚 More
+## More
 
 - [SETUP.md](SETUP.md): API key, exporting your real HubSpot data, importing the result back, extending it, troubleshooting
 - [docs/DETAILS.md](docs/DETAILS.md): all the pain-point quotes, full feature list and example output, cost note, stack-swap table, customising, and how this runs today vs production

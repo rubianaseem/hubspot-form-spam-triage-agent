@@ -14,7 +14,7 @@ If you can create a repo but aren't sure where you actually *run* this, here's t
 
 1. **GitHub** is where the code lives. Copy it to your laptop with `git clone https://github.com/rubianaseem/hubspot-form-spam-triage-agent.git`, or click **Code → Download ZIP** and unzip it.
 2. **HubSpot** is where you get the input. Export the form's submissions, or a contact view of recently created contacts, as a CSV (steps in [SETUP.md](../SETUP.md#4-use-your-real-hubspot-data)).
-3. **Terminal** (Mac Terminal, or the terminal inside Cursor) is where you run the script on that CSV: `python agent.py --input your_export.csv` (see [Quick start](../README.md#-quick-start)).
+3. **Terminal** (Mac Terminal, or the terminal inside Cursor) is where you run the script on that CSV: `python agent.py --input your_export.csv` (see [Quick start](../README.md#quick-start)).
 4. **Claude is optional.** With no API key the agent uses its built-in rules. If you add an Anthropic API key to `.env`, Claude gives a second opinion and a short reviewer note on the rows the rules flagged. It still runs in the terminal. You don't open the Claude app or paste anything into a chat.
 5. **You, then HubSpot.** Open `out/triage_report.md` and `out/triage.csv`, check the *review* rows and spot-check the *likely spam* ones, then import `out/hubspot_import.csv` back into HubSpot to set the spam properties. Finally add "Spam triage status is not likely_spam" to your lead workflows and conversion reports.
 
@@ -87,11 +87,11 @@ Note row 50104: a normal-looking name and phone, but a disposable email, inside 
 
 `out/triage_report.md` adds the signals that fired, the forms taking the most spam, a table of rows to check, and next steps.
 
-## 💷 Cost note
+## Cost note
 
 With no API key it costs nothing. With a key, Claude is only called for rows the rules flagged (*review* and *likely spam*), with one short prompt each, so a typical weekly export only sends a handful of rows. Check current pricing on Anthropic's site; I haven't put a number here because it depends on your model and volume.
 
-## 🔁 Stack-swap table
+## Stack-swap table
 
 | This repo uses | Swap for | What changes |
 |---|---|---|
@@ -101,7 +101,7 @@ With no API key it costs nothing. With a key, Claude is only called for rows the
 | Anthropic Claude | Any LLM with a Python SDK | Edit `get_client` and `llm_second_opinion` |
 | Run by hand in Terminal | n8n, a HubSpot custom code action, or a scheduled job | Call the same scoring on each new submission |
 
-## 🛠 Customise for your stack
+## Customise for your stack
 
 - **Your markets:** set `TARGET_COUNTRIES` in `.env` so out-of-market IPs add a small amount of risk (it's deliberately weak on its own).
 - **Your thresholds:** `REVIEW_AT` and `SPAM_AT` in `.env`. Start strict on review and loose on spam, then tighten once you've reviewed a few weeks.
@@ -109,7 +109,7 @@ With no API key it costs nothing. With a key, Claude is only called for rows the
 - **Your spam phrases:** add what your forms actually receive to `SPAM_PHRASES`.
 - **Forms without a page URL by design:** if you post submissions server-side, remove the `Page URL` column from the export (or the weight) so it isn't counted.
 
-## 🧭 How this runs today (and what production would add)
+## How this runs today (and what production would add)
 
 **Today:** you export a CSV, run the script on your laptop, review the output, and import the result yourself. That's on purpose. It lets you see the false positives before anything changes in HubSpot.
 
